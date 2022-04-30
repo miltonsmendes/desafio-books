@@ -1,3 +1,4 @@
+import { ShowcaseBooks } from "./components/ShowcaseBooks";
 import { SignIn } from "./components/SignIn";
 import { GlobalStyle } from './styles/global';
 
@@ -5,7 +6,8 @@ import { GlobalStyle } from './styles/global';
 function App() {
   return (
     <>
-      <SignIn />
+      {/* <SignIn /> */}
+      <ShowcaseBooks />
       <GlobalStyle />
     </>
 

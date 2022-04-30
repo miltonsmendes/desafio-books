@@ -10,7 +10,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   padding-left: 115px;
-  background: #ffffff url(${BackgrounImage}) no-repeat center;
+  background: var(--background-light) url(${BackgrounImage}) no-repeat center;
 `;
 
 export const Header = styled.div`
@@ -28,7 +28,7 @@ export const Logo = styled.div`
 `;
 
 export const Title = styled.div`
-  color: #ffffff;
+  color: var(--text-light);
   font-family: Heebo;
   font-size: 28px;
   font-weight: 300;
@@ -43,7 +43,7 @@ export const SignInInput = styled.div`
   width: 368px;
   height: 60px;
   border-radius: 4px;
-  background: #00000052;
+  background: var(--background-dark);
   margin-bottom: 16px;
   padding: 8px 16px;
 
@@ -52,7 +52,7 @@ export const SignInInput = styled.div`
   justify-content: center;
 
   label {
-    color: #ffffff;
+    color: var(--text-light);
     opacity: 50%;
 
     font-family: Heebo;
@@ -64,7 +64,7 @@ export const SignInInput = styled.div`
 
   input {
     all: unset;
-    color: #ffffff;
+    color: var(--text-light);
     opacity: 1;
     font-family: Heebo;
     font-size: 16px;
@@ -87,8 +87,8 @@ export const ConfirmButton = styled.div`
   height: 36px;
   border-radius: 44px;
 
-  color: #b22e6f;
-  background: #ffffff;
+  color: var(--text-pink);
+  background: var(--background-light);
 
   font-family: Heebo;
   font-size: 1rem;
