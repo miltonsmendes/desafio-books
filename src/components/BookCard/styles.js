@@ -12,7 +12,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  justify-content: space-between;
 
   &:hover{
     box-shadow: 0px 16px 80px 0px var(--shadow-hover);
@@ -20,13 +19,10 @@ export const Container = styled.div`
 `;
 
 export const Image = styled.div`
-  width: 80px;
-  height: 122px;
   box-shadow: 0px 6px 9px 0px var(--shadow-image);
-  position: relative;
+  /* position: relative; */
 
   img {
-    max-width: 100%;
     width: 80px;
     height: 122px;
     object-fit: cover;

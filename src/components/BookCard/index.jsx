@@ -1,4 +1,4 @@
-import Book from '../../images/book.png';
+import Book from "../../images/book.png";
 
 import {
   Container,
@@ -10,21 +10,28 @@ import {
   Author,
 } from "./styles";
 
-export function BookCard() {
+export function BookCard(props) {
+  const bookInfo = props.info;
   return (
     <Container>
-      <Image><img src={Book}/></Image>
+      <Image>
+        <img alt="book" src={bookInfo.imageUrl} />
+      </Image>
 
       <ContainerInfo>
         <ContainerTitle>
-          <Title>Crossing the Chasm</Title>
-          <Author>Geoffrey A. Moore</Author>
+          <Title>{bookInfo.title}</Title>
+          <Author>
+            {
+              (bookInfo.authors).length > 1 ? bookInfo.authors[0] : <div>{bookInfo.authors[0]}, ...</div>
+            }
+          </Author>
         </ContainerTitle>
 
         <Details>
-          <div>150 Paginas</div>
-          <div>Editora Loyola</div>
-          <div>Publicado em 2020</div>
+          <div>{bookInfo.pageCount} Páginas</div>
+          <div>Editora {bookInfo.publisher}</div>
+          <div>Publicado em {bookInfo.published}</div>
         </Details>
       </ContainerInfo>
     </Container>

@@ -1,3 +1,5 @@
+import { useAuth } from "../../hooks/auth";
+
 import {
   Container,
   Header,
@@ -5,10 +7,13 @@ import {
   Title,
   ContainerInputs,
   SignInInput,
-  ConfirmButton
+  ConfirmButton,
 } from "./styles";
 
+
 export function SignIn() {
+  const { handleSignIn } = useAuth();
+
   return (
     <Container>
       <Header>
@@ -24,7 +29,7 @@ export function SignIn() {
         <SignInInput>
           <label>Senha</label>
           <input name="password" type="password"></input>
-          <ConfirmButton>Entrar</ConfirmButton>
+          <ConfirmButton onClick={handleSignIn}>Entrar</ConfirmButton>
         </SignInInput>
       </ContainerInputs>
     </Container>
