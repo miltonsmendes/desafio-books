@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 
-import BookImage from "../../images/book-detail.png";
-
 import {
   Container,
   Image,
@@ -19,14 +17,16 @@ import {
 } from "./style";
 
 export function BookDetail(props) {
+  const authorization = localStorage.getItem('@desafioBooks');
+
+  console.log('authorization', authorization);
+
   const [data, setData] = useState([]);
   const bookId = props.info;
 
   useEffect(() => {
     async function getData() {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWM5YzI5MGNjNDk4YjVjMDg4NDVlMGEiLCJ2bGQiOjE2NTEzNTM0Njk2MzksImlhdCI6MTY1MTM1NzA2OTYzOX0.JUUtnJRoR5OJ7YyFWjO-p5xQjAAeCPD0KJu89bY6awY";
-
+      const token = authorization;
       const response = await api.get(`/books/${bookId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -41,7 +41,7 @@ export function BookDetail(props) {
   return (
     <Container>
       <Image>
-        <img src={data.imageUrl} />
+        <img alt="book"  src={data.imageUrl} />
       </Image>
 
       <InfoContainer>

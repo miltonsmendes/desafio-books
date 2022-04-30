@@ -1,5 +1,7 @@
 import { useAuth } from "../../hooks/auth";
 
+import { NavLink } from 'react-router-dom';
+
 import {
   Container,
   Header,
@@ -29,7 +31,8 @@ export function SignIn() {
         <SignInInput>
           <label>Senha</label>
           <input name="password" type="password"></input>
-          <ConfirmButton onClick={handleSignIn}>Entrar</ConfirmButton>
+          <NavLink to="/home"><ConfirmButton onClick={handleSignIn}>Entrar</ConfirmButton></NavLink>
+          
         </SignInInput>
       </ContainerInputs>
     </Container>

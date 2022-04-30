@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { BookCard } from "../BookCard";
 import { BookDetail } from "../BookDetail";
 
-import { useAuth } from "../../hooks/auth";
 import api from "../../services/api";
 import Modal from "react-modal";
+import { NavLink } from 'react-router-dom';
 
 import {
   Container,
@@ -26,16 +26,16 @@ import {
 Modal.setAppElement('#root');
 
 export function ShowcaseBooks() {
+
+  const authorization = localStorage.getItem('@desafioBooks');
+
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const [data, setData] = useState([]);
   const [selectedBook, setSelectedBook] = useState({});
 
-  const { user } = useAuth();
-
   useEffect(() => {
     async function getData() {
-      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWM5YzI5MGNjNDk4YjVjMDg4NDVlMGEiLCJ2bGQiOjE2NTEzNTM0Njk2MzksImlhdCI6MTY1MTM1NzA2OTYzOX0.JUUtnJRoR5OJ7YyFWjO-p5xQjAAeCPD0KJu89bY6awY";
-      
+      const token = authorization;
       const response = await api.get("/books?page=1$&amount=25", {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -44,6 +44,10 @@ export function ShowcaseBooks() {
 
     getData();
   }, []);
+
+  function handleLogOut(){
+    localStorage.setItem("@desafioBooks", '');
+  }
 
   function hadleOpenProductDetailModal(book) {
     setIsProductDetailOpen(true);
@@ -65,7 +69,8 @@ export function ShowcaseBooks() {
 
         <ContainerProfileUser>
           <User>Bem vindo, Milton!</User>
-          <SignOutIcon />
+          <NavLink to="/"><div onClick={handleLogOut}><SignOutIcon /></div></NavLink>
+          
         </ContainerProfileUser>
       </Header>
 
