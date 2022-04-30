@@ -20,7 +20,6 @@ export const Container = styled.div`
 
 export const Image = styled.div`
   box-shadow: 0px 6px 9px 0px var(--shadow-image);
-  /* position: relative; */
 
   img {
     width: 80px;
@@ -49,9 +48,9 @@ export const Details = styled.div`
 
 export const Title = styled.div`
   font-family: Heebo;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
   line-height: 20px;
 
   color: #333333;

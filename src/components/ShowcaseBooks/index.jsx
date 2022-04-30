@@ -28,12 +28,13 @@ Modal.setAppElement('#root');
 export function ShowcaseBooks() {
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const [data, setData] = useState([]);
+  const [selectedBook, setSelectedBook] = useState({});
 
   const { user } = useAuth();
 
   useEffect(() => {
     async function getData() {
-      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWM5YzI5MGNjNDk4YjVjMDg4NDVlMGEiLCJ2bGQiOjE2NTEzNDk4NTMyNTYsImlhdCI6MTY1MTM1MzQ1MzI1Nn0.t7EQ9_3-v_fac_NHHSQy1rDqsoilWGHozvbxrXa3-no";
+      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWM5YzI5MGNjNDk4YjVjMDg4NDVlMGEiLCJ2bGQiOjE2NTEzNTM0Njk2MzksImlhdCI6MTY1MTM1NzA2OTYzOX0.JUUtnJRoR5OJ7YyFWjO-p5xQjAAeCPD0KJu89bY6awY";
       
       const response = await api.get("/books?page=1$&amount=25", {
         headers: { Authorization: `Bearer ${token}` },
@@ -44,8 +45,10 @@ export function ShowcaseBooks() {
     getData();
   }, []);
 
-  function hadleOpenProductDetailModal() {
+  function hadleOpenProductDetailModal(book) {
     setIsProductDetailOpen(true);
+    setSelectedBook(book.id)
+
   }
 
   function hadleCloseProductDetailModal() {
@@ -69,7 +72,7 @@ export function ShowcaseBooks() {
       <ContainerBooksCards>
         {data.map(book => {
           return (
-            <div key={book.id} onClick={hadleOpenProductDetailModal}>
+            <div key={book.id} onClick={() => hadleOpenProductDetailModal(book)}>
               <BookCard info={book}/>
             </div>
           );
@@ -91,7 +94,7 @@ export function ShowcaseBooks() {
         <div onClick={hadleCloseProductDetailModal}>
           <CloseButton />
         </div>
-        <BookDetail />
+        <BookDetail info={selectedBook}/>
       </Modal>
     </Container>
   );
