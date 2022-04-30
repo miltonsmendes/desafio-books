@@ -5,6 +5,7 @@ import LogoImage from "../../images/logo-dark.svg";
 import LogoOutIcon from "../../images/logout-icon.svg";
 import PrevIcon from "../../images/previous-icon.svg";
 import NextIcon from "../../images/next-icon.svg";
+import CloseIcon from "../../images/close-icon.svg";
 
 export const Container = styled.div`
   display: flex;
@@ -14,6 +15,7 @@ export const Container = styled.div`
   background-size: cover;
 
   padding: 0 115px;
+  padding-top: 42px;
   margin-bottom: 1rem;
 
   @media (max-width: 600px) {
@@ -97,6 +99,12 @@ export const ContainerPagination = styled.div`
 `;
 
 export const Page = styled.div`
+  font-family: Heebo;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+
   margin-right: 1rem;
 `;
 
@@ -111,4 +119,13 @@ export const PageNavigationButtonRight = styled.div`
   height: 32px;
   background: url(${NextIcon}) no-repeat center;
   margin-left: 8px;
+`;
+
+export const CloseButton = styled.div`
+  width: 32px;
+  height: 32px;
+  background: url(${CloseIcon}) no-repeat center;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 `;

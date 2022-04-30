@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { BookCard } from "../BookCard";
+import { BookDetail } from "../BookDetail";
+import Modal from "react-modal";
 
 import {
   Container,
@@ -13,10 +16,21 @@ import {
   ContainerPagination,
   Page,
   PageNavigationButtonLeft,
-  PageNavigationButtonRight
+  PageNavigationButtonRight,
+  CloseButton,
 } from "./styles";
 
 export function ShowcaseBooks() {
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+
+  function hadleOpenProductDetailModal() {
+    setIsProductDetailOpen(true);
+  }
+
+  function hadleCloseProductDetailModal() {
+    setIsProductDetailOpen(false);
+  }
+
   return (
     <Container>
       <Header>
@@ -32,18 +46,42 @@ export function ShowcaseBooks() {
       </Header>
 
       <ContainerBooksCards>
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
+        <div onClick={hadleOpenProductDetailModal}>
+          <BookCard />
+        </div>
+        <div onClick={hadleOpenProductDetailModal}>
+          <BookCard />
+        </div>
+        <div onClick={hadleOpenProductDetailModal}>
+          <BookCard />
+        </div>
+        <div onClick={hadleOpenProductDetailModal}>
+          <BookCard />
+        </div>
+        <div onClick={hadleOpenProductDetailModal}>
+          <BookCard />
+        </div>
+        <div onClick={hadleOpenProductDetailModal}>
+          <BookCard />
+        </div>
+        <div onClick={hadleOpenProductDetailModal}>
+          <BookCard />
+        </div>
+        <div onClick={hadleOpenProductDetailModal}>
+          <BookCard />
+        </div>
+        <div onClick={hadleOpenProductDetailModal}>
+          <BookCard />
+        </div>
+        <div onClick={hadleOpenProductDetailModal}>
+          <BookCard />
+        </div>
+        <div onClick={hadleOpenProductDetailModal}>
+          <BookCard />
+        </div>
+        <div onClick={hadleOpenProductDetailModal}>
+          <BookCard />
+        </div>
       </ContainerBooksCards>
 
       <ContainerPagination>
@@ -51,6 +89,18 @@ export function ShowcaseBooks() {
         <PageNavigationButtonLeft />
         <PageNavigationButtonRight />
       </ContainerPagination>
+
+      <Modal
+        isOpen={isProductDetailOpen}
+        onRequestClose={hadleCloseProductDetailModal}
+        overlayClassName="react-modal-overlay"
+        className="react-modal-content"
+      >
+        <div onClick={hadleCloseProductDetailModal}>
+          <CloseButton />
+        </div>
+        <BookDetail />
+      </Modal>
     </Container>
   );
 }
