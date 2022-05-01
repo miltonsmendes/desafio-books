@@ -15,6 +15,8 @@ export const GlobalStyle = createGlobalStyle`
     --shadow-hover: #54105F52;
     --shadow-image: #00000026;
 
+    --grey: #999999;
+
 }
 
 
@@ -47,12 +49,17 @@ background: red;
     width: 100%;
     height: 608px;
     max-width: 769px;
-    max-height: 608px;
+    /* max-height: 608px; */
     background: var(--background-light);
 
     border-radius: 4px;
     box-shadow: 0px 16px 80px 0px #00000052;
 
+    @media (max-width: 600px) {
+      height: auto;
+      width: 90%;
+    }
   }
+
 
 `;

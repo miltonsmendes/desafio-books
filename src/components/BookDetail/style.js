@@ -6,6 +6,10 @@ export const Container = styled.div`
   justify-content: center;
   padding: 48px;
   gap: 2rem;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 export const Image = styled.div`
@@ -18,6 +22,14 @@ export const Image = styled.div`
     height: 512px;
     object-fit: cover;
   }
+
+  @media (max-width: 600px) {
+    img {
+      width: 240px;
+      height: 350px;
+      object-fit: cover;
+    }
+  }
 `;
 
 export const InfoContainer = styled.div`
@@ -27,19 +39,18 @@ export const InfoContainer = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
 
-::-webkit-scrollbar {
-  width: 4px;
-}
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
 
-::-webkit-scrollbar-track {
-  background: #ffffff;  
-}
+  ::-webkit-scrollbar-track {
+    background: var(--background-light);
+  }
 
-::-webkit-scrollbar-thumb {
-  background: #AB2680; 
-  border-radius: 30px;
-}
-
+  ::-webkit-scrollbar-thumb {
+    background: var(--text-pink-dark);
+    border-radius: 30px;
+  }
 `;
 
 export const Title = styled.div`
@@ -103,7 +114,7 @@ export const InfoDetail = styled.div`
   line-height: 20px;
   text-align: right;
 
-  color: #999999;
+  color: var(--grey);
 `;
 
 export const BookReviewContainer = styled.div``;
@@ -115,5 +126,5 @@ export const Review = styled.div`
   line-height: 20px;
   text-align: justify;
 
-  color: #999999;
+  color: var(--grey);
 `;

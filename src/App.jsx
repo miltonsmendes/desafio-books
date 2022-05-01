@@ -1,6 +1,3 @@
-import { ShowcaseBooks } from "./components/ShowcaseBooks";
-import { SignIn } from "./components/SignIn";
-
 import {LoginScreen} from './screens/LoginScreen';
 import {HomeScreen} from './screens/HomeScreen';
 import { GlobalStyle } from "./styles/global";
@@ -19,8 +16,6 @@ function App() {
             <Route path="/home" element={<HomeScreen />} />
         </Routes>
         </BrowserRouter>
-        {/* <SignIn /> */}
-        {/* <HomeScreen /> */}
         <GlobalStyle />
       </AuthProvider>
   );

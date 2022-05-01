@@ -19,8 +19,6 @@ import {
 export function BookDetail(props) {
   const authorization = localStorage.getItem('@desafioBooks');
 
-  console.log('authorization', authorization);
-
   const [data, setData] = useState([]);
   const bookId = props.info;
 
@@ -35,8 +33,6 @@ export function BookDetail(props) {
 
     getData();
   }, []);
-
-  console.log("modal data", data);
 
   return (
     <Container>

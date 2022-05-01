@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BookCard } from "../BookCard";
 import { BookDetail } from "../BookDetail";
 
-import api from "../../services/api";
 import Modal from "react-modal";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 
 import {
   Container,
@@ -23,36 +23,21 @@ import {
   CloseButton,
 } from "./styles";
 
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 
 export function ShowcaseBooks() {
-
-  const authorization = localStorage.getItem('@desafioBooks');
-
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
-  const [data, setData] = useState([]);
   const [selectedBook, setSelectedBook] = useState({});
 
-  useEffect(() => {
-    async function getData() {
-      const token = authorization;
-      const response = await api.get("/books?page=1$&amount=25", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setData(response.data.data);
-    }
+  const { booksList, user } = useAuth();
 
-    getData();
-  }, []);
-
-  function handleLogOut(){
-    localStorage.setItem("@desafioBooks", '');
+  function handleLogOut() {
+    localStorage.removeItem("@desafioBooks");
   }
 
   function hadleOpenProductDetailModal(book) {
     setIsProductDetailOpen(true);
-    setSelectedBook(book.id)
-
+    setSelectedBook(book.id);
   }
 
   function hadleCloseProductDetailModal() {
@@ -68,20 +53,27 @@ export function ShowcaseBooks() {
         </ContainerLogo>
 
         <ContainerProfileUser>
-          <User>Bem vindo, Milton!</User>
-          <NavLink to="/"><div onClick={handleLogOut}><SignOutIcon /></div></NavLink>
-          
+          <User>Bem vindo, {user.name}!</User>
+          <NavLink to="/">
+            <div onClick={handleLogOut}>
+              <SignOutIcon />
+            </div>
+          </NavLink>
         </ContainerProfileUser>
       </Header>
 
       <ContainerBooksCards>
-        {data.map(book => {
-          return (
-            <div key={book.id} onClick={() => hadleOpenProductDetailModal(book)}>
-              <BookCard info={book}/>
-            </div>
-          );
-        })}
+        {booksList &&
+          booksList.map((book) => {
+            return (
+              <div
+                key={book.id}
+                onClick={() => hadleOpenProductDetailModal(book)}
+              >
+                <BookCard info={book} />
+              </div>
+            );
+          })}
       </ContainerBooksCards>
 
       <ContainerPagination>
@@ -99,7 +91,7 @@ export function ShowcaseBooks() {
         <div onClick={hadleCloseProductDetailModal}>
           <CloseButton />
         </div>
-        <BookDetail info={selectedBook}/>
+        <BookDetail info={selectedBook} />
       </Modal>
     </Container>
   );
