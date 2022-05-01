@@ -23,7 +23,7 @@ O projeto também possui:
 ```
 O app foi desenvolvido para ser o mais fiel aos layouts oferecidos do Figma e utilizando os dados da API já estabelecidos.
 
-Prévia do Layout fornecido:
+Prévia do Layout desenvolvido:
 
 ![Login](src/images/preview-signin.jpg)
 ![ShowCase](src/images/preview-showcase.jpg)
