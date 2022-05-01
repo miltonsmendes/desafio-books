@@ -1,5 +1,5 @@
-# Teste técnico Webjump
-Este teste foi realizado avaliar os conhecimentos e habilidades em frontend (HTML, CSS, JavaScript React).
+# Teste técnico IOASYS
+Este teste foi realizado avaliar os conhecimentos e habilidades em frontend (HTML, CSS, JavaScript e React).
 
 ## Objetivo do teste
 O desafio é desenvolver um WebApp criando layout de acordo com Figma, realizar autenticação e consumir dados por API externa.  
