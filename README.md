@@ -39,3 +39,7 @@ Rodar frontend:
 * Instale as dependências com npm install
 * Use npm start/yarn start na pasta para iniciar o projeto.
 * Acesse http://localhost:3000
+* Utilize os dados abaixo para realizar o login:
+
+Usuário de Teste: desafio@ioasys.com.br
+Senha de Teste: 12341234
