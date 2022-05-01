@@ -11,6 +11,7 @@ export const Container = styled.div`
   height: 100vh;
   padding-left: 115px;
   background: var(--background-light) url(${BackgrounImage}) no-repeat center;
+  background-size: cover;
 `;
 
 export const Header = styled.div`
